@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kaps-tts"
+version = "0.1.0"
+description = "Ultra-lightweight streaming bilingual TTS with voice design"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4",
+    "torchaudio>=2.4",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "websockets>=13.1",
+    "numpy>=1.26",
+    "soundfile>=0.12",
+    "pypinyin>=0.53",
+    "g2p-en>=2.1",
+]
+
+[project.optional-dependencies]
+gpu = ["flash-attn>=2.6", "nvidia-cudnn-cu12"]
+demo = ["gradio>=5.0"]
+
+[project.scripts]
+kaps-server = "kaps.server:main"
